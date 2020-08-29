@@ -8347,7 +8347,7 @@ then
       then
         WEBBLOCK=$( timeout --signal=SIGKILL 15s wget -4qO- -T 15 -t 2 -o- "${EXPLORER_URL}block/latest" "${BAD_SSL_HACK}" | jq -r '.result.height' | tr -d '[:space:]' 2>/dev/null )
       else
-        WEBBLOCK=$( timeout --signal=SIGKILL 15s wget -4qO- -T 15 -t 2 -o- "${EXPLORER_URL}${EXPLORER_BLOCKCOUNT_PATH}" "${BAD_SSL_HACK}" | jq -r '.backend.blocks' | tr -d '[:space:]' )
+        WEBBLOCK=$( timeout --signal=SIGKILL 15s wget -4qO- -T 15 -t 2 -o- "${EXPLORER_URL}${EXPLORER_BLOCKCOUNT_PATH}" "${BAD_SSL_HACK}" | jq '.backend.blocks' | tr -d '[:space:]' )
       fi
 
       if [[ $( echo "${WEBBLOCK}" | grep -c 'data' ) -gt 0 ]]
