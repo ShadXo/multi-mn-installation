@@ -1926,8 +1926,7 @@ GENERATE_SCRIPT () {
   then
     BLOCKCOUNT=$( timeout --signal=SIGKILL 15s wget -4qO- -T 15 -t 2 -o- "${EXPLORER_URL}block/latest" "${BAD_SSL_HACK}" | jq -r '.result.height' | tr -d '[:space:]' )
   else
-    #BLOCKCOUNT=$( timeout --signal=SIGKILL 15s wget -4qO- -T 15 -t 2 -o- "${EXPLORER_URL}${EXPLORER_BLOCKCOUNT_PATH}" "${BAD_SSL_HACK}" | tr -d '[:space:]' )
-    BLOCKCOUNT=$( timeout --signal=SIGKILL 15s wget -4qO- -T 15 -t 2 -o- "curl -s "https://explorer.dogec.io/api/" | jq '.blockbooks.blocks'" "${BAD_SSL_HACK}" | tr -d '[:space:]' )
+    BLOCKCOUNT=$( timeout --signal=SIGKILL 15s wget -4qO- -T 15 -t 2 -o- "${EXPLORER_URL}${EXPLORER_BLOCKCOUNT_PATH}" "${BAD_SSL_HACK}" | tr -d '[:space:]' )
   fi
 
   EXTRA_LINES=''
@@ -8348,7 +8347,7 @@ then
       then
         WEBBLOCK=$( timeout --signal=SIGKILL 15s wget -4qO- -T 15 -t 2 -o- "${EXPLORER_URL}block/latest" "${BAD_SSL_HACK}" | jq -r '.result.height' | tr -d '[:space:]' 2>/dev/null )
       else
-        WEBBLOCK=$( timeout --signal=SIGKILL 15s wget -4qO- -T 15 -t 2 -o- "${EXPLORER_URL}${EXPLORER_BLOCKCOUNT_PATH}" "${BAD_SSL_HACK}" | tr -d '[:space:]' )
+        WEBBLOCK=$( timeout --signal=SIGKILL 15s wget -4qO- -T 15 -t 2 -o- "${EXPLORER_URL}${EXPLORER_BLOCKCOUNT_PATH}" "${BAD_SSL_HACK}" | jq -r '.blockbooks.blocks'| tr -d '[:space:]' )
       fi
 
       if [[ $( echo "${WEBBLOCK}" | grep -c 'data' ) -gt 0 ]]
