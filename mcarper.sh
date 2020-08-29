@@ -612,7 +612,8 @@ fi
 # Set the endpoint getting the rawtransaction.
 if [[ -z "${EXPLORER_RAWTRANSACTION_PATH}" ]]
 then
-  EXPLORER_RAWTRANSACTION_PATH='api/getrawtransaction?txid='
+  #EXPLORER_RAWTRANSACTION_PATH='api/getrawtransaction?txid='
+  EXPLORER_RAWTRANSACTION_PATH='api/tx'
 fi
 EXPLORER_RAWTRANSACTION_PATH=$( echo "${EXPLORER_RAWTRANSACTION_PATH}" | tr -d '\040\011\012\015' )
 
@@ -8433,7 +8434,8 @@ then
       OUTPUTIDX_RAW=$( wget -4qO- -T 15 -t 2 -o- "${EXPLORER_URL}transaction?txid=${TXHASH}" "${BAD_SSL_HACK}" | jq '.result' 2>/dev/null )
       sleep "${EXPLORER_SLEEP}"
     else
-      URL=$( echo "${EXPLORER_URL}${EXPLORER_RAWTRANSACTION_PATH}${TXHASH}${EXPLORER_RAWTRANSACTION_PATH_SUFFIX}" | tr -d '[:space:]' )
+      #URL=$( echo "${EXPLORER_URL}${EXPLORER_RAWTRANSACTION_PATH}${TXHASH}${EXPLORER_RAWTRANSACTION_PATH_SUFFIX}" | tr -d '[:space:]' )
+      URL=$( echo "${EXPLORER_URL}${EXPLORER_RAWTRANSACTION_PATH}${TXHASH}" | tr -d '[:space:]' )
       echo "${URL}"
       OUTPUTIDX_RAW=$( wget -4qO- -T 15 -t 2 -o- "${URL}" "${BAD_SSL_HACK}" )
       sleep "${EXPLORER_SLEEP}"
