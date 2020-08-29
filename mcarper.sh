@@ -6959,7 +6959,7 @@ ${TXID} ${OUTPUTIDX}"
     fi
     if [[ -z "${DAEMON_CONNECTIONS}" ]]
     then
-      DAEMON_CONNECTIONS=2
+      DAEMON_CONNECTIONS=0
     fi
 
     # Get block count from the explorer.
