@@ -9,7 +9,7 @@
 # Run this file
 
 ```
-bash -ic "$(wget -4qO- -o- raw.githubusercontent.com/ShadXo/multi-mn-installation/master/mcarper.sh)" ; source ~/.bashrc
+bash -ic "$(wget -4qO- -o- raw.githubusercontent.com/ShadXo/multi-mn-installation/development/mcarper.sh)" ; source ~/.bashrc
 ```
 
 '
@@ -29,7 +29,7 @@ CONF='dogecash.conf'
 # Port.
 DEFAULT_PORT=56740
 # Explorer URL.
-EXPLORER_URL='https://api.dogec.io/'
+EXPLORER_URL='https://explorer.dogec.io/'
 # Rate limit explorer.
 EXPLORER_SLEEP=1
 EXPLORER_PEERS='api/peer'
@@ -94,7 +94,7 @@ while [[ ! -f ~/___mn.sh ]] || [[ $( grep -Fxc "# End of masternode setup script
 do
   rm -f ~/___mn.sh
   echo "Downloading Masternode Setup Script."
-  wget -4qo- raw.githubusercontent.com/ShadXo/multi-mn-installation/master/mcarper.sh -O ~/___mn.sh
+  wget -4qo- raw.githubusercontent.com/ShadXo/multi-mn-installation/development/mcarper.sh -O ~/___mn.sh
   COUNTER=1
   if [[ "${COUNTER}" -gt 3 ]]
   then
@@ -119,4 +119,3 @@ DAEMON_SETUP_THREAD
 # shellcheck source=/root/.bashrc
 . ~/.bashrc
 stty sane 2>/dev/null
-
