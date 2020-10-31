@@ -175,7 +175,7 @@ fi
 FIRST_SYNC=0
 if [[ "${ARG1}" == 'FIRST_SYNC' ]]
 then
-#  FIRST_SYNC=1
+  FIRST_SYNC=0
 fi
 
 GET_MISSING_COIN_PARAMS () {
