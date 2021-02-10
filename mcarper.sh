@@ -6930,7 +6930,7 @@ ${TXID} ${OUTPUTIDX}"
     echo "${OUTPUT}" | sed '/^[[:space:]]*$/d'
   )
 
-  elif [ "${ARG9}" == "sync" ]
+elif [ "${ARG9}" == "sync1" ]
   then
   (
     local i
@@ -10101,7 +10101,7 @@ sleep 0.1
 done
 
 # Execute getopt
-ARGS=$(getopt -o "c:" -l "count:" -n "multi-nodes-installer.sh" -- "$@");
+ARGS=$(getopt -o "c:" -l "count:" -n "___mn.sh" -- "$@");
 
 eval set -- "$ARGS";
 
