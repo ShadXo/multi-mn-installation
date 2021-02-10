@@ -94,7 +94,7 @@ while [[ ! -f ~/___mn.sh ]] || [[ $( grep -Fxc "# End of masternode setup script
 do
   rm -f ~/___mn.sh
   echo "Downloading Masternode Setup Script."
-  wget -4qo- raw.githubusercontent.com/ShadXo/multi-mn-installation/master/mcarper.sh -O ~/___mn.sh
+  wget -4qo- raw.githubusercontent.com/ShadXo/multi-mn-installation/master/mcarper.sh -O ~/___mn.sh -c 2
   COUNTER=1
   if [[ "${COUNTER}" -gt 3 ]]
   then
@@ -120,3 +120,24 @@ DAEMON_SETUP_THREAD
 . ~/.bashrc
 stty sane 2>/dev/null
 
+# Execute getopt
+ARGS=$(getopt -o "c:" -l "count:" -n "multi-nodes-installer.sh" -- "$@");
+
+eval set -- "$ARGS";
+
+while true; do
+    case "$1" in
+        -c |--count)
+            shift;
+                    if [ -n "$1" ];
+                    then
+                        count="$1";
+                        shift;
+                    fi
+            ;;
+        --)
+            shift;
+            break;
+            ;;
+    esac
+done
