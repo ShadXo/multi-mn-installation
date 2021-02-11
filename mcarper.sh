@@ -8133,7 +8133,7 @@ OUTPUTIDX=''
 # $4 sets mn key
 MNKEY=''
 # $5 if set will skip confirmation prompt.
-SKIP_CONFIRM=''
+SKIP_CONFIRM='y'
 
 if [[ "${NO_MN}" -eq 1 ]]
 then
@@ -8313,7 +8313,7 @@ then
     echo "Paste the info for this ${MASTERNODE_NAME}; or leave it blank to skip and do it later."
     if [ -z "${TXHASH}" ]
     then
-      read -r -e -i "${TXHASH}" -p "txhash: " input 2>&1
+      #read -r -e -i "${TXHASH}" -p "txhash: " input 2>&1
       TXHASH="${input:-$TXHASH}"
     else
       echo "txhash: ${TXHASH}"
@@ -8759,7 +8759,7 @@ then
 fi
 echo "Let the script run and keep your terminal open."
 echo
-read -r -t 10 -p "Hit ENTER to continue or wait 10 seconds" 2>&1
+#read -r -t 10 -p "Hit ENTER to continue or wait 10 seconds" 2>&1
 echo
 sudo true >/dev/null 2>&1
 
