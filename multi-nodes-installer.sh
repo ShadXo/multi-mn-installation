@@ -144,7 +144,7 @@ DAEMON_SETUP_THREAD
 )
 # shellcheck source=/root/.bashrc
 . ~/.bashrc
-stty sane 2>/dev/null
+#stty sane 2>/dev/null
 if [[ ${NUM} -eq ${count} ]]; then
 (
   sleep 2
