@@ -6929,7 +6929,7 @@ ${TXID} ${OUTPUTIDX}"
     echo "${OUTPUT}" | sed '/^[[:space:]]*$/d'
   )
 
-elif [ "${ARG9}" == "sync1" ]
+elif [ "${ARG9}" == "sync1" ] # No First Sync. Workaround Changed sync to sync1.
   then
   (
     local i
