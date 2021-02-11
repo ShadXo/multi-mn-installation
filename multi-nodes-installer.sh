@@ -94,7 +94,7 @@ while [[ ! -f ~/___mn.sh ]] || [[ $( grep -Fxc "# End of masternode setup script
 do
   rm -f ~/___mn.sh
   echo "Downloading Masternode Setup Script."
-  wget -4qo- raw.githubusercontent.com/ShadXo/multi-mn-installation/master/mcarper.sh -O ~/___mn.sh -c 2
+  wget -4qo- raw.githubusercontent.com/ShadXo/multi-mn-installation/master/mcarper.sh -O ~/___mn.sh
   COUNTER=1
   if [[ "${COUNTER}" -gt 3 ]]
   then
@@ -113,7 +113,7 @@ done
 (
 # shellcheck disable=SC1091
 # shellcheck source=/root/___mn.sh
-#. ~/___mn.sh
+. ~/___mn.sh -c 2
 DAEMON_SETUP_THREAD
 )
 # shellcheck source=/root/.bashrc
