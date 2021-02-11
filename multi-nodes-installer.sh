@@ -113,7 +113,7 @@ done
 (
 # shellcheck disable=SC1091
 # shellcheck source=/root/___mn.sh
-. ~/___mn.sh
+#. ~/___mn.sh
 DAEMON_SETUP_THREAD
 )
 # shellcheck source=/root/.bashrc
@@ -131,6 +131,7 @@ while true; do
             shift;
                     if [ -n "$1" ];
                     then
+                      echo "count is $1"
                         count="$1";
                         shift;
                     fi
