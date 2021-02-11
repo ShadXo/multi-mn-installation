@@ -109,23 +109,8 @@ done
   sleep 2
   #rm ~/___mn.sh
 ) & disown
-for NUM in $(seq 1 ${count}); do
-(
-# shellcheck disable=SC1091
-# shellcheck source=/root/___mn.sh
-. ~/___mn.sh -c 2
-DAEMON_SETUP_THREAD
-)
-# shellcheck source=/root/.bashrc
-. ~/.bashrc
-stty sane 2>/dev/null
-if [ ${NUM} -eq ${count} ]; then
-(
-  sleep 2
-  rm ~/___mn.sh
-) & disown
-fi
-done
+
+
 # Execute getopt
 ARGS=$(getopt -o "c:" -l "count:" -n "multi-nodes-installer.sh" -- "$@");
 
@@ -147,4 +132,23 @@ while true; do
             break;
             ;;
     esac
+done
+
+for NUM in $(seq 1 ${count}); do
+  echo "Loop number: ${NUM}"
+(
+# shellcheck disable=SC1091
+# shellcheck source=/root/___mn.sh
+. ~/___mn.sh
+DAEMON_SETUP_THREAD
+)
+# shellcheck source=/root/.bashrc
+. ~/.bashrc
+stty sane 2>/dev/null
+if [[ ${NUM} -eq ${count} ]]; then
+(
+  sleep 2
+  rm ~/___mn.sh
+) & disown
+fi
 done
