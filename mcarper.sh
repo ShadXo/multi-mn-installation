@@ -10111,6 +10111,7 @@ while true; do
             shift;
                     if [ -n "$1" ];
                     then
+                      echo "count is $1"
                         count="$1";
                         shift;
                     fi
