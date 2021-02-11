@@ -5,7 +5,6 @@
 # Copyright (c) 2019
 # All rights reserved.
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
-for NUM in $(seq 1 ${count}); do
 stty sane 2>/dev/null
 
 USRNAME=''
@@ -10097,28 +10096,3 @@ echo "Script Loaded."
 echo
 sleep 0.1
 # End of masternode setup script.
-
-done
-
-# Execute getopt
-ARGS=$(getopt -o "c:" -l "count:" -n "___mn.sh" -- "$@");
-
-eval set -- "$ARGS";
-
-while true; do
-    case "$1" in
-        -c |--count)
-            shift;
-                    if [ -n "$1" ];
-                    then
-                      echo "count is $1"
-                        count="$1";
-                        shift;
-                    fi
-            ;;
-        --)
-            shift;
-            break;
-            ;;
-    esac
-done
