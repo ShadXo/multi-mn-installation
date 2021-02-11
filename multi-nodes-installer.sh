@@ -135,7 +135,7 @@ while true; do
 done
 
 for NUM in $(seq 1 ${count}); do
-  echo "Loop number: ${NUM}"
+  echo "Loop number: ${NUM}/${count}"
 (
 # shellcheck disable=SC1091
 # shellcheck source=/root/___mn.sh
