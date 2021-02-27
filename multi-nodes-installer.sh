@@ -110,6 +110,8 @@ done
   #rm ~/___mn.sh
 ) & disown
 
+# Default run once
+count=1
 
 # Execute getopt
 ARGS=$(getopt -o "c:" -l "count:" -n "multi-nodes-installer.sh" -- "$@");
